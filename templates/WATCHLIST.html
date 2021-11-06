@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='watchlist.css') }}">
+
+    <title>Watch List</title>
+  <script>
+        function addWatchlist()
+            {
+                let watchl = {{list|tojson}};
+
+                for( let i = 0; i < watchl.length;i++){
+
+
+
+                    let q = watchl[i];
+                    let table = document.getElementById('Mywatchlist');
+                    let newRow = table.insertRow();
+                    let cel1 = newRow.insertCell(0);
+                    let cel2 = newRow.insertCell(1);
+                    let cel3 = newRow.insertCell(2);
+                    let cel4 = newRow.insertCell(3);
+                    let cel5 = newRow.insertCell(4);
+
+                    cel1.innerHTML = q.substring(0,q.search(',')).toUpperCase();
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel2.innerHTML =  "$"+q.substring(0,q.search(','));
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel3.innerHTML = "$"+ q.substring(0,q.search(','));
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel4.innerHTML =  "$"+q.substring(0,q.search(','));
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel5.innerHTML =  "$"+q.substring(0,q.length);
+                    q = q
+
+                }
+
+
+
+
+                  // add cells to the row
+
+
+                  // add values to the cells
+
+            }
+
+
+    </script>
+<script>
+        function addVeludiWartchlist()
+            {
+                let watchv = {{vlist|tojson}};
+
+                for( let i = 0; i < watchv.length;i++){
+
+
+
+                    let q = watchv[i];
+                    let table = document.getElementById('Veludiwatchlist');
+                    let newRow = table.insertRow();
+                    let cel1 = newRow.insertCell(0);
+                    let cel2 = newRow.insertCell(1);
+                    let cel3 = newRow.insertCell(2);
+                    let cel4 = newRow.insertCell(3);
+                    let cel5 = newRow.insertCell(4);
+
+                    cel1.innerHTML = q.substring(0,q.search(',')).toUpperCase();
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel2.innerHTML = "$"+ q.substring(0,q.search(','));
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel3.innerHTML = "$"+ q.substring(0,q.search(','));
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel4.innerHTML =  "$"+q.substring(0,q.search(','));
+                    q = q.substring(q.search(',')+1,q.length);
+                    cel5.innerHTML =  "$"+q.substring(0,q.length);
+                    q = q
+
+
+                }
+
+
+
+
+                  // add cells to the row
+
+
+                  // add values to the cells
+
+            }
+
+
+    </script>
+
+</head>
+<body onload = "addVeludiWartchlist();addWatchlist();">
+<div class="sidenav" >
+        <ul class = "side-nav">
+            <li class  = "nav-item"> class = "</li>
+            <div class="hope">
+                <img src="{{pic}}"  width="90" height="90" id = 'image'>
+            </div>
+                    <br>
+            </br>
+            <li class  = "nav-item"> class = "</li>
+                <a href="#" class="nav-link">About</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="logIn" class="nav-link">Account Value</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="search" class="nav-link">Search</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="WatchList" class="nav-link">Watchlist</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="Order_History" class="nav-link">Orders</a>
+        </ul>
+
+
+</div>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar" >
+     <table id="Veludiwatchlist"   >
+    <caption>Veludi Top 10 Suggested Coins</caption>
+
+            <tr>
+                <th>Coin Ticker</th>
+                <th>Open Price</th>
+                <th>Current Price</th>
+                <th>High Price</th>
+                <th>Low Price</th>
+
+            </tr>
+
+        </table>
+     </div>
+
+ <table id="Mywatchlist"   >
+    <caption>My Watch List</caption>
+
+            <tr>
+                <th>Coin Ticker</th>
+                <th>Open Price</th>
+                <th>Current Price</th>
+                <th>High Price</th>
+                <th>Low Price</th>
+
+            </tr>
+
+        </table>
+
+<form id = "box" class = "box" action="" METHOD="post">
+        <input type="submit" name = "editList" value="Edit Watchlist">
+
+    </form>
+
+</body>
+</html>

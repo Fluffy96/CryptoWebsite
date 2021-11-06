@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Login Veludi</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='logpage.css') }}">
+
+</head>
+<body>
+<div class = 'logo'>
+    <img src="{{logIMG}}"  width="294.25" height="105.625" id = 'image'>
+</div>
+
+<div>
+    <form id = "box" class = "box" action="" METHOD="post">
+        <h1>Login</h1>        {% with message = get_flashed_messages() %}
+            {% if message %}
+                <p style="color:red;font-size:12px;"> Incorrect Name or Password please try again </p>
+            {% endif %}
+        {% endwith %}
+        <h2>Name:</h2>
+        <input name="Name" type="text" placeholder="Write your name">
+        <h2>Password:</h2>
+        <input name="Password" type="password" placeholder="Write your Password">
+        <input type="submit" value="Login">
+
+    </form>
+</div>
+
+</body>
+</html>

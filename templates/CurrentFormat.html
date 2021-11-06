@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='currentForm.css') }}">
+
+<script>
+
+            function addRow()
+            {
+                var piePriceData = {{piePriceData|tojson}};
+                var coinNames = {{coins|tojson}};
+
+                var have = {{have|tojson}};
+                var compare = {{compare|tojson}};
+                let theTot=0;
+                for( let i = 0; i < have.length;i++){
+                    var std = have[i];
+                    var x = compare[i];
+                    var name = std.substring(0,std.search(':'));
+                    std= std.substring(std.search(':')+1,std.length);
+                    var share = std.substring(0,std.search(':'));
+                    std= std.substring(std.search(':')+1,std.search(','));
+
+                    var price = std.substring(0,std.length);
+                    var table = document.getElementsByTagName('table')[0];
+                    var newRow = table.insertRow();
+                    var cel1 = newRow.insertCell(0);
+                    var cel2 = newRow.insertCell(1);
+                    var cel3 = newRow.insertCell(2);
+                    var cel4 = newRow.insertCell(3);
+                    var cel5 = newRow.insertCell(4);
+                    var cel6 = newRow.insertCell(5);
+                    var cel7 = newRow.insertCell(6);
+
+                    cel1.innerHTML = name;
+                    cel2.innerHTML = share;
+                    cel3.innerHTML = "$"+price*share;
+                    cel4.innerHTML = "$"+price;
+                    cel5.innerHTML = "$"+Math.round(x*100)/100;
+                    cel6.innerHTML = "$"+share* Math.round(x*100)/100;
+                    theTot = theTot+share* Math.round(x*100)/100;
+                    cel7.innerHTML = Math.round(((share*x) - (price*share))*100)/100;
+                    if(Math.round(((share*x) - (price*share))*100)/100 < 0){
+                        cel7.bgColor= '#F00';
+                        }else{
+                            cel7.bgColor= '#00FF00';
+                        }
+
+                }
+                let myTab = document.getElementById('accountInfo');
+                document.getElementById("acValue").innerHTML ="Investment Value: "+"$"+ Math.round(theTot *100)/100;
+                document.getElementById("acCash").innerHTML ="Account Cash Value: "+"$"+ {{cashHeld|tojson}};
+                //code above sets the total Account Value
+
+
+                  // add cells to the row
+
+
+                  // add values to the cells
+
+            }
+
+        </script>
+
+
+    </head>
+
+    <body onload="addRow(); addWatchlist();">
+
+    <div class="sidenav" >
+        <ul class = "side-nav">
+            <li class  = "nav-item"> class = "</li>
+            <div class="hope">
+                <img src="{{pic}}"  width="90" height="90" id = 'image'>
+            </div>
+                    <br>
+            </br>
+            <li class  = "nav-item"> class = "</li>
+                <a href="#" class="nav-link">About</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="logIn" class="nav-link">Account Value</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="search" class="nav-link">Search</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="WatchList" class="nav-link">Watchlist</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="Order_History" class="nav-link">Orders</a>
+        </ul>
+
+
+</div>
+
+
+
+
+    <div id="piechart" class ="pieChartS" ></div>
+        <div id = "tableblock" class="table-wrapper-scroll-y my-custom-scrollbar" >
+
+        <table id="accountInfo"   >
+    <caption style = "background-color:white;">Account Details</caption>
+
+            <tr>
+
+                <th>Coin Name</th>
+                <th>Shares</th>
+                <th>Initial Investment</th>
+                <th>Cost Per Share</th>
+                <th>Current Market Price</th>
+                <th>Market Value</th>
+                <th>Net Gain</th>
+
+            </tr>
+
+        </table>
+
+
+    </div>
+    <h1 id ="acValue"></h1>
+    <h1 id ="acCash"></h1>
+
+
+
+    </body>
+ <! –– below is the script for the pie chart ––>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      google.charts.load('current', {'packages':['corechart']}).then(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string','Coin Names')
+        data.addColumn('number','Amount of Money Invested')
+
+            var myTab = document.getElementById('accountInfo');
+            let x = 1;
+            let investSum = 0;
+            let cName ='';
+            for (i = 1; i < myTab.rows.length; i++) {
+
+                if(myTab.rows[x].cells[0].innerHTML == myTab.rows[i].cells[0].innerHTML){
+                    cName = myTab.rows[x].cells[0].innerHTML;
+                    investSum = investSum + parseFloat((myTab.rows[i].cells[2].innerHTML).replace('$', ''));
+                }else{
+                    data.addRow([cName,investSum]);
+
+                    x = i;
+                    investSum = parseFloat((myTab.rows[i].cells[2].innerHTML).replace('$', ''));
+                    cName = myTab.rows[x].cells[0].innerHTML;
+                }
+            }
+            data.addRow([cName,investSum]);
+
+        var options = {
+          title: 'Portfolio',
+            "fontSize":18,
+            "fontName":"Quicksand",
+            "width": 1700,
+            "height":950,
+            "titleTextStyle":{"fontName":"Quicksand","fontSize":40}
+
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+ <! –– below is the script for the line chart ––>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBackgroundColor);
+
+    function drawBackgroundColor() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Day: ');
+          data.addColumn('number', 'Total Market Value: ');
+
+          data.addRows([
+            [new Date(2019,1,1), 0],   [new Date(2019,1,2), 10],  [new Date(2019,1,3), 23],  [new Date(2019,1,4), 17],  [new Date(2019,1,5), 18],  [new Date(2019,1,6), 9],
+            [new Date(2019,1,7), 11],  [new Date(2019,1,8), 27],  [new Date(2019,1,9), 33],  [new Date(2019,1,10), 40],  [new Date(2019,1,11), 32], [new Date(2019,1,12), 35],
+            [new Date(2019,1,13), 30], [new Date(2019,1,14), 40], [new Date(2019,1,15), 42], [new Date(2019,1,16), 47], [new Date(2019,1,17), 44], [new Date(2019,1,18), 48]
+          ]);
+
+          var options = {
+            title: 'Account Value Since Joined',
+            "fontSize":18,
+            "fontName":"Quicksand",
+            "width": 1700,
+            "height":950,
+            "titleTextStyle":{"fontName":"Quicksand","fontSize":40},
+            backgroundColor: 'white',
+            legend:{position: 'none'}
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('line'));
+          chart.draw(data, options);
+        }
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='addCash.css') }}">
+
+</head>
+<body>
+<div>
+    <form id = "box" class = "box" action="" METHOD="post">
+        <h1>Change Amount of Cash</h1>        {% with message = get_flashed_messages() %}
+            {% if message %}
+                <p style="color:red;font-size:12px;"> Incorrect Name </p>
+            {% endif %}
+        {% endwith %}
+        <h2>Name:</h2>
+        <input name="Name" type="text" placeholder="Write your name">
+        <h2>Change amount by:</h2>
+        <input name="addCash" type="text" placeholder="How much money added">
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='userEditWatch.css') }}">
+    <title>Title</title>
+</head>
+<script>
+function addVeludiWartchlist()
+            {
+                let watchv = {{list|tojson}};
+
+                for( let i = 0; i < watchv.length;i++){
+                    let q = watchv[i];
+                    let table = document.getElementById('Veludiwatchlist');
+                    let newRow = table.insertRow();
+                    let cel1 = newRow.insertCell(0);
+                    cel1.innerHTML =  q.toUpperCase();
+
+                }
+
+
+
+
+                  // add cells to the row
+
+
+                  // add values to the cells
+
+            }
+
+
+</script>
+<body onload="addVeludiWartchlist();">
+    <div class="sidenav" >
+        <ul class = "side-nav">
+            <li class  = "nav-item"> class = "</li>
+            <div class="hope">
+                <img src="{{pic}}"  width="90" height="90" id = 'image'>
+            </div>
+                    <br>
+            </br>
+            <li class  = "nav-item"> class = "</li>
+                <a href="#" class="nav-link">About</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="logIn" class="nav-link">Account Value</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="search" class="nav-link">Search</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="WatchList" class="nav-link">Watchlist</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="Order_History" class="nav-link">Orders</a>
+        </ul>
+
+
+</div>
+<div>
+<table id="Veludiwatchlist"   >
+    <caption>My Watch List </caption>
+
+            <tr>
+                <th>Coin Ticker</th>
+     </tr>
+
+        </table>
+</div>
+<div>
+    <form id = "box" class = "box" action="" METHOD="post">
+        <h1>Edit Watchlist</h1>
+        <h2>Remove:</h2>
+        <input name="Remove" type="text" placeholder="Remove coins example AAVE,BTC">
+        <h2>Add:</h2>
+        <input name="Add" type="text" placeholder="Add coins example AAVE,BTC,LINK">
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+</body>
+</html>

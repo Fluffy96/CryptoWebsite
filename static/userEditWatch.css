@@ -1,0 +1,127 @@
+body{
+
+    background-color: #eeeeee;
+font-family:'Quicksand';
+}
+.sidenav {
+
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 8em; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stsay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 1em;
+  font-family:'Open Sans';
+
+}
+.sidenav a {
+  padding: .5em;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  margin-left:-35px;
+  margin-top:-20px;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.hope{
+margin-left:-1.45em;
+margin-top:-3em;
+}
+
+#Veludiwatchlist {
+    border-collapse: collapse;
+    background-color: white;
+    margin-top:2em;
+    margin-left:15em;
+    width:600px;
+    height:600;
+    font-size:20px;
+    text-align: center;
+
+    font-Family: Quicksand;
+    }
+#Veludiwatchlist th {
+    padding : .8em;
+    background-color: white
+    font-family:Quicksand
+
+
+    }
+#Veludiwatchlist tr:nth-child(even){
+    background-color: #f2f2f2;
+    font-family:Quicksand
+    margin-left:2em;
+  }
+
+#Veludiwatchlist tr:hover {
+      background-color: #89CFF0;
+  }
+#Veludiwatchlist caption {
+          background-color:white;
+          font-size:30px;
+  }
+#box{
+    margin-left:65em;
+    background-color: white;
+    width: 25em;
+    padding: 20px;
+    margin-top: -12em;
+    border-radius: 10px;
+}
+#box h1{
+    text-align: center;
+    color: black;
+    font-weight:500;
+    font-size:30px;
+}
+#box h2{
+    color: black;
+    text-align: left;
+    font-size:25px;
+    font-weight:100;
+    padding: 1px 10px;
+transform: translate(10%,50%);
+    }
+#box input[type="text"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: .25s;
+
+    }
+#box input[type = "text"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+    }
+.box input[type = "submit"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 10px 5px;
+    width: 80px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: .25s;
+}
+.box input[type = "submit"]:hover{
+   background: #2ecc71;
+}
+

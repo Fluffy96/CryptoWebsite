@@ -1,0 +1,56 @@
+body{
+
+    background-color: #eeeeee;
+font-family:'Quicksand';
+}
+
+#Veludiwatchlist {
+border-collapse: collapse;
+background-color: white;
+margin-top:2em;
+    margin-left:18em;
+    width:1300px;
+    height:600;
+    font-size:20px;
+
+font-Family: Quicksand;
+}
+#Veludiwatchlist th {
+padding : .8em;
+background-color: white
+font-family:Quicksand
+
+}
+#Veludiwatchlist tr:nth-child(even){
+    background-color: #f2f2f2;
+    font-family:Quicksand}
+
+#Veludiwatchlist tr:hover {
+          background-color: #89CFF0;
+        }
+#Veludiwatchlist caption {
+          background-color:white;
+          font-size:30px;
+       }
+#box{
+    margin-left:50em;
+    background-color: white;
+    width: 100em;
+    padding: 40px;
+}
+#box h1{
+    margin-left:3em;
+}
+#box h2{
+    margin-left:2.5em;
+}
+#box input[type="text"]{
+    margin-left:8em;
+    width:15em;
+    height:2em;
+
+}
+#box input[type = "text"]:focus{
+width: 18em;
+height:3em;
+}

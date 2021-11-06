@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='editWatch.css') }}">
+    <title>Title</title>
+</head>
+<script>
+function addVeludiWartchlist()
+            {
+                let watchv = {{list|tojson}};
+
+                for( let i = 0; i < watchv.length;i++){
+                    let q = watchv[i];
+                    let table = document.getElementById('Veludiwatchlist');
+                    let newRow = table.insertRow();
+                    let cel1 = newRow.insertCell(0);
+                    cel1.innerHTML =q.toUpperCase();
+
+                }
+
+
+
+
+                  // add cells to the row
+
+
+                  // add values to the cells
+
+            }
+
+
+</script>
+<body onload="addVeludiWartchlist();">
+<div>
+<table id="Veludiwatchlist"   >
+    <caption>Veludi Top 10 Suggested Coins</caption>
+
+            <tr>
+                <th>Coin Ticker</th>
+     </tr>
+
+        </table>
+</div>
+<div>
+    <form id = "box" class = "box" action="" METHOD="post">
+        <h1>Edit Watchlist</h1>
+        <h2>Remove:</h2>
+        <input name="Remove" type="text" placeholder="Remove coins example AAVE,BTC">
+        <h2>Add:</h2>
+        <input name="Add" type="text" placeholder="Add coins example AAVE,BTC,LINK">
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+</body>
+</html>

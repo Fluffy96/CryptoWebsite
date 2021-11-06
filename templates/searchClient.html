@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='delPage.css') }}">
+</head>
+<body>
+<form class = "box" method ="post" action="">
+
+    <label>Name:</label>
+    <input type = "text" name = "delName"  id="delName" placeholder="Name of Client" style ="height: 15px; width: 250px;"><br><br>
+
+    <input type="submit" value="Login">
+    {% with message = get_flashed_messages() %}
+            {% if message %}
+                <p style="color:red"> This name does not exist try again</p>
+            {% endif %}
+        {% endwith %}
+</form>
+</body>
+</html>

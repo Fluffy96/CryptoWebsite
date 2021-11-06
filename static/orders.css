@@ -1,0 +1,102 @@
+body{
+
+    background-color: #eeeeee;
+font-family:'Quicksand';
+}
+.sidenav {
+
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 8em; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 1em;
+
+
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: .5em;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  margin-left:-35px;
+  margin-top:-20px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.hope{
+margin-left:-1.45em;
+margin-top:-3em;
+}
+#CurrentOrderTable {
+border-collapse: collapse;
+background-color: white;
+margin-top:2em;
+    margin-left:18em;
+    width:1300px;
+    height:600;
+    font-size:20px;
+text-align: center;
+font-Family: Quicksand;
+}
+#CurrentOrderTable th {
+    padding : .8em;
+    background-color: white
+    font-family:Quicksand
+    text-align: center;
+}
+#CurrentOrderTable tr:nth-child(even){
+    background-color: #f2f2f2;
+    font-family:Quicksand
+    text-align: center;
+    }
+
+#CurrentOrderTable tr:hover {
+  background-color: #89CFF0;
+}
+#CurrentOrderTable caption {
+  background-color:white;
+  font-size:30px;
+}
+#PastOrderTable {
+    border-collapse: collapse;
+    background-color: white;
+    margin-top:2em;
+    margin-left:18em;
+    width:1300px;
+    height:600;
+    font-size:20px;
+    text-align: center;
+    font-Family: Quicksand;
+}
+#PastOrderTable th {
+    padding : .8em;
+    background-color: white
+    font-family:Quicksand
+    text-align: center;
+
+}
+#PastOrderTable tr:nth-child(even){
+    background-color: #f2f2f2;
+    font-family:Quicksand
+    text-align: center;
+}
+
+#PastOrderTable tr:hover {
+  background-color: #89CFF0;
+  text-align: center;
+}
+#PastOrderTable caption {
+  background-color:white;
+  font-size:30px;
+  text-align: center;
+}

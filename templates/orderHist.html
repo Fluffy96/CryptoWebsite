@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='orders.css') }}">
+    <title>Orders</title>
+    <script>
+        function addCurrent(){
+            let openOrders = {{current|tojson}};
+            for( let i = 0; i < openOrders.length;i++){
+            let table = document.getElementById('CurrentOrderTable');
+                    let newRow = table.insertRow();
+                    let cel1 = newRow.insertCell(0);
+                    let cel2 = newRow.insertCell(1);
+                    let cel3 = newRow.insertCell(2);
+                    cel1.innerHTML = openOrders[i][1].toUpperCase();
+                    cel2.innerHTML = openOrders[i][2]
+                    cel3.innerHTML = openOrders[i][3]
+            }
+        }
+    </script>
+        <script>
+        function addPast(){
+            let pastOrders = {{past|tojson}};
+            for( let i = 0; i < pastOrders.length;i++){
+            let table = document.getElementById('PastOrderTable');
+                    let newRow = table.insertRow();
+                    let cel1 = newRow.insertCell(0);
+                    let cel2 = newRow.insertCell(1);
+                    let cel3 = newRow.insertCell(2);
+                    cel1.innerHTML = pastOrders[i][1].toUpperCase();
+                    cel2.innerHTML = pastOrders[i][2]
+                    cel3.innerHTML = pastOrders[i][3]
+            }
+        }
+    </script>
+</head>
+    <body onload="addPast(); addCurrent();">
+
+    <div class="sidenav" >
+        <ul class = "side-nav">
+            <li class  = "nav-item"> class = "</li>
+            <div class="hope">
+                <img src="{{pic}}"  width="90" height="90" id = 'image'>
+            </div>
+                    <br>
+            </br>
+            <li class  = "nav-item"> class = "</li>
+                <a href="#" class="nav-link">About</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="logIn" class="nav-link">Account Value</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="search" class="nav-link">Search</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="WatchList" class="nav-link">Watchlist</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="Order_History" class="nav-link">Orders</a>
+        </ul>
+
+
+</div>
+
+     <table id="CurrentOrderTable"   >
+    <caption style = "background-color:white;">Open Orders</caption>
+
+            <tr>
+
+                <th>Coin Name</th>
+                <th>Quantity</th>
+                <th>Cost Per Share</th>
+
+            </tr>
+
+        </table>
+
+         <table id="PastOrderTable"   >
+    <caption style = "background-color:white;">Fulfilled Orders</caption>
+
+            <tr>
+
+                <th>Coin Name</th>
+                <th>Quantity</th>
+                <th>Cost Per Share</th>
+
+            </tr>
+
+        </table>
+</body>
+</html>

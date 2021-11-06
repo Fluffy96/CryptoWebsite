@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='changeCoin1.css') }}">
+
+</head>
+
+<body onload="names();">
+<div>
+  <form class = "box" method ="post">
+      <table id="coinChange">
+      <tr>
+                <th>Clients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Coin Name</th>
+            </tr>
+
+      </table>
+      <input type="submit" name = "enter" >
+
+
+  </form>
+
+</div>
+</body>
+<script>
+function names(){
+let user = {{names|tojson}};
+
+for (let i = 0; i<user.length;i++){
+    var table = document.getElementsByTagName('table')[0];
+    var newRow = table.insertRow();
+    var cel1 = newRow.insertCell(0);
+    var cel2 = newRow.insertCell(1);
+    var cel3 = newRow.insertCell(2);
+    var cel4 = newRow.insertCell(3);
+    var price = user[i].concat("p");
+    var q = user[i];
+
+    cel1.innerHTML = user[i];
+    cel2.innerHTML = "<input type = 'text' name = "+ price +" id="+price +" placeholder='Sell Price per'>";
+    cel3.innerHTML = "<input type = 'text' name = "+ q +" id="+ q +" placeholder='Quantity Sold'>";
+
+    if(i == 0){
+
+        cel4.innerHTML = " <input type = 'text' name = 'cname'  id='cname' placeholder='Write coin name'> ";
+        }else{
+        cel4.innerHTML = "";
+        }
+
+    }
+}
+</script>
+
+</html>

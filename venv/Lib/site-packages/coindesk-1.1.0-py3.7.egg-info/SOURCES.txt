@@ -1,0 +1,15 @@
+README.md
+setup.cfg
+setup.py
+coindesk/__init__.py
+coindesk/client.py
+coindesk/decorators.py
+coindesk/exceptions.py
+coindesk/schemas.py
+coindesk/settings.py
+coindesk/utils.py
+coindesk.egg-info/PKG-INFO
+coindesk.egg-info/SOURCES.txt
+coindesk.egg-info/dependency_links.txt
+coindesk.egg-info/requires.txt
+coindesk.egg-info/top_level.txt

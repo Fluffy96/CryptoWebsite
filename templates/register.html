@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register a New User</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='registerPage.css') }}">
+</head>
+
+<body>
+<div style = "overflow:scroll; overflow-y:scroll; overflow-x:hidden;">
+  <form class = "box" action = "" method ="post">
+    <h1 >Name:</h1>
+    <input type = "text" name = "regName"  id="regName" placeholder="Write name here"><br><br>
+<h1>Password:</h1>
+    <input type = "password" name = "regPassword"  id="regPassword" placeholder="Write password here"><br><br>
+    <input type="submit" value="Create">
+
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+body{
+
+    background-color: #eeeeee;
+
+}
+.sidenav {
+
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 8em; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 1em;
+  font-family:'Open Sans';
+
+}
+.sidenav a {
+  padding: .5em;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  margin-left:-35px;
+  margin-top:-20px;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+.hope{
+margin-left:-1.45em;
+margin-top:-3em;
+}
+#tableblock{
+
+margin-top:1em;
+height:800px;
+font-Family: Quicksand;
+}
+#accountInfo caption {
+          background-color:white;
+          font-size:30px;
+       }
+#accountInfo {
+border-collapse: collapse;
+background-color: white;
+margin-top:1em;
+    margin-left:9.4em;
+    width:1700px;
+    height:950;
+    font-size:17px;
+
+font-Family: Quicksand;
+}
+#accountInfo th {
+padding : .8em;
+background-color: white
+font-family:Quicksand
+
+}
+#accountInfo tr:nth-child(even){
+    background-color: #f2f2f2;
+    font-family:Quicksand
+    }
+#accountInfo tr:hover {
+          background-color: #89CFF0;
+
+
+        }
+#accountInfo, th,td{
+text-align: center;
+padding:.5em;
+
+}
+.my-custom-scrollbar {
+position: relative;
+height: 31.25em;
+overflow:  auto;
+}
+.accountInfo-wrapper-scroll-y {
+display: block;
+
+}
+#piechart{
+    font-Family: Quicksand;
+
+    margin-left:10em;
+
+}
+#line{
+    margin-left:10em;
+    margin-top:1em;
+}
+
+#acCash{
+margin-left:34em;
+margin-top:-1.94em;
+font-Family: Quicksand;
+}
+#acValue{
+margin-left:16em;
+margin-top:1em;
+font-Family: Quicksand;
+}

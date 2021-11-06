@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='Searchcoins.css') }}">
+    <script src = "https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js">
+
+    </script>
+</head>
+<script>
+    function yes(){
+    var have = {{have|tojson}};
+    console.log(have.length);
+    if(have.length == 0){
+        var element = document.getElementsByTagName('table')[1];
+        element.style.opacity = "0";
+        element = document.getElementsByTagName('table')[0];
+        element.style.opacity = "0";
+    }else{
+        var element = document.getElementsByTagName('table')[1];
+        element.style.opacity = "1";
+        element = document.getElementsByTagName('table')[1];
+        element.style.opacity = "1";
+        }
+
+    }
+</script>
+<body onload="yes();">
+<div class="sidenav">
+        <ul class = "side-nav">
+            <li class  = "nav-item"> class = "</li>
+            <div class="hope">
+                <img src="{{pic}}"  width="90" height="90" id = 'image'>
+            </div>
+                    <br>
+            </br>
+            <li class  = "nav-item"> class = "</li>
+                <a href="#" class="nav-link">About</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="logIn" class="nav-link">Account Value</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="search" class="nav-link">Search</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="WatchList" class="nav-link">Watchlist</a>
+            <li class  = "nav-item"> class = "</li>
+                <a href="#" class="nav-link">Contact</a>
+        </ul>
+
+
+</div>
+
+<div>
+    <form class = "box" action="" METHOD="post">
+
+        <h1>Enter Below the Coin Code</h1>
+        <input name="Code" type="text" placeholder="Write Coin Code">
+
+        {% with message = get_flashed_messages() %}
+            {% if message %}
+                <p style="color:red;font-size:12px;"> Incorrect Coin Ticker try again </p>
+            {% endif %}
+        {% endwith %}
+        <input type="submit" value="Search" name = "search">
+        <input type="submit" value="Add to Watch List" name = "add">
+    </form>
+
+</div>
+
+<div id ="chart" class = "chart" >
+
+</div>
+
+<table id ="cTabel">
+    <tr>
+        <th>
+            {{nam[0]}} Price:
+        </th>
+        <td>
+            {{have[0]}}
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Ask Price:
+        </th>
+        <td>
+            {{have[1]}}
+        </td>
+    </tr>
+        <th>
+            Open Price:
+        </th>
+    <td>
+            {{have[2]}}
+        </td>
+    </tr>
+    <tr>
+        <th>
+            High Price:
+        </th>
+        <td>
+            {{have[3]}}
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Low Price:
+        </th>
+        <td>
+            {{have[3]}}
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Volume:
+        </th>
+        <td>
+            {{have[4]}}
+        </td>
+    </tr>
+</table>
+
+<script>
+var chart = LightweightCharts.createChart(document.getElementById("chart"), {
+	width: 1400,
+    height: 575,
+
+
+
+
+	layout: {
+  		backgroundColor: '#000000',
+		textColor: 'rgba(255, 255, 255, 0.9)',
+
+	},
+	grid: {
+		vertLines: {
+			color: 'rgba(197, 203, 206, 0.5)',
+		},
+		horzLines: {
+			color: 'rgba(197, 203, 206, 0.5)',
+		},
+	},
+	crosshair: {
+		mode: LightweightCharts.CrosshairMode.Normal,
+	},
+	rightPriceScale: {
+		borderColor: 'rgba(197, 203, 206, 0.8)',
+	},
+	timeScale: {
+		borderColor: 'rgba(197, 203, 206, 0.8)',
+	},
+});
+
+var candleSeries = chart.addCandlestickSeries({
+  upColor: 'rgba(255, 144, 0, 1)',
+  downColor: '#000',
+  borderDownColor: 'rgba(255, 144, 0, 1)',
+  borderUpColor: 'rgba(255, 144, 0, 1)',
+  wickDownColor: 'rgba(255, 144, 0, 1)',
+  wickUpColor: 'rgba(255, 144, 0, 1)',
+});
+
+candleSeries.setData({{lineGraph|tojson}});
+</script>
+
+</body>
+</html>

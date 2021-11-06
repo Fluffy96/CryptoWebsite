@@ -1,0 +1,35 @@
+body{
+    background-color: #eeeeee;
+    font-family: Quicksand;
+overflow-x: hidden;
+	overflow-y: visible;
+
+
+}
+
+
+.box{
+
+    padding:2em;
+
+
+    text-align: center;
+    border:none;
+    position: absolute;
+    font-family: Quicksand;
+}
+.box input[type = "submit"]{
+    width: 300px;
+    height: 100px;
+    font-family: Quicksand;
+    font-size: 25px;
+    margin: 2em;
+    background-color: white;
+}
+.box input[type = "submit"]:hover{
+   background: #2ecc71;
+  }
+.box h1{
+font-size: 45px;
+font-family: Quicksand;
+}

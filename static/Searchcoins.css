@@ -1,0 +1,123 @@
+
+.chart{
+float:right;
+margin:8px;
+}
+
+.table, th,td{
+text-align: center;
+margin:1px;
+font-family:Quicksand
+
+}
+body{
+
+    background-color: #eeeeee;
+
+    font-family:Quicksand;
+}
+.box{
+    width: 45em;
+    height:12.5em;
+   margin-left: 40em;
+   margin-top: -1em;
+   padding: .8em;
+
+
+
+    background-color: white;
+    text-align: center;
+
+}
+.box h1{
+    color: black;
+    font-size: 40px;
+    font-weight:600;
+
+
+}
+.box input[type = 'submit']{
+    background: #A9A9A9;
+    width: 150px;
+    height:50px;
+    padding: 10px 10px 10px 10px;
+
+    text-align: center;
+    border-radius: 24px;
+    font-Family: Quicksand;
+
+}
+.hope{
+margin-left:-1.45em;
+margin-top:-3em;
+}
+.box input[type = "text"], .box input[type = "password"]{
+    border:0;
+    background: #A9A9A9;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid #000000;
+    padding: 14px 10px;
+    width: 270px;
+    height:30px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: .25s;
+}
+
+#cTabel{
+
+    margin-top: .53em;
+    margin-left: 10em;
+background-color:white;
+}
+#cTabel th {
+  height: 70px;
+    font-size:1.5em;
+    padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight:600;
+}
+#cTabel tr:hover {
+          background-color: #89CFF0;
+          color: white;
+        }
+#cTabel td{
+
+padding-top: 8px;
+padding-bottom: 8px;
+font-size:1.3em;
+}
+.sidenav {
+    font-Family: Quicksand;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 8em; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+   /* Disable horizontal scroll */
+  padding-top: 1em;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: .5em;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  margin-left:-35px;
+  margin-top:-20px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+
+

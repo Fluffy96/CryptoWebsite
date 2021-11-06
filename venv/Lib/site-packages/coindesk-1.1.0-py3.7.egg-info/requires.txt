@@ -1,0 +1,4 @@
+aiohttp>=3.6.1
+jsonschema>=3.0.2
+requests>=2.22.0
+furl>=2.1.0

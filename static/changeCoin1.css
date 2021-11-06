@@ -1,0 +1,34 @@
+
+body{
+
+    background-color: #eeeeee;
+
+}
+
+#coinChange {
+border-collapse: collapse;
+background-color: white;
+
+    width: 53em;
+
+}
+#coinChange th {
+padding : .8em;
+background-color: white
+font-family:Quicksand
+
+}
+#coinChange tr:nth-child(even){
+    background-color: #f2f2f2;
+    font-family:Quicksand}
+
+#coinChange tr:hover {
+          background-color: yellow;
+        }
+
+
+#coinChange, th,td{
+text-align: center;
+padding:.5em;
+font-family:Quicksand;
+}
