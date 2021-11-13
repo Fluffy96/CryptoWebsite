@@ -21,10 +21,8 @@ app.config["MYSQL_DB"] = "login"
 app.permanent_session_lifetime= timedelta(hours = 2) #store session date for 5 minutes
 db = MySQL(app)
 
-coinsOwn = ['Aave', 'Bitcoin', 'Bitcoincash', 'Chainlink', 'Cosmos', 'Etherium', 'Filecoin', 'ICP', 'Nucypher',
-            'Origin', 'Storj']
-coinTicker = {'Aave': 'AAVE','Bitcoin': 'BTC','Bitcoincash':'BCH','Chainlink':'LINK','Cosmos':'ATOM','Etherium':'ETH','Filecoin':'FIL','ICP':'ICP','Nucypher':'NU',
-              'Origin':'OGN','Storj':'STORJ'}
+coinsOwn = []
+coinTicker = {}
 coinPrice=[]
 nameShareInitialprice = []
 
@@ -560,6 +558,14 @@ def newCoin():
                 coinsOwn.append(name)
                 coinTicker[name] = ticker
                 cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
+                f = open("coinTicker.csv", "a", newline='')
+                writer = csv.writer(f)
+                writer.writerow([name, ticker])
+                f.close()
+                f = open("coinsown.csv", "a", newline='')
+                writer = csv.writer(f)
+                writer.writerow([name])
+                f.close()
                 cur.execute("ALTER TABLE crypto ADD " + name+" VARCHAR(100) DEFAULT 0")
                 db.connection.commit()
 
@@ -578,10 +584,19 @@ def delCoin():
                 name = request.form['coName']
                 ticker = request.form['cTick']
                 coinsOwn.remove(name)
-                coinTicker[name] = ticker
+                del coinTicker[name]
                 cur = db.connection.cursor(MySQLdb.cursors.DictCursor)
                 cur.execute("ALTER TABLE crypto DROP Column " + name)
                 db.connection.commit()
+                f = open("coinsown.csv", "w", newline='')
+                writer = csv.writer(f)
+                writer.writerows(coinsOwn)
+                f.close()
+                f = open("coinTicker.csv", "w", newline='')
+                writer = csv.writer(f)
+                for key, value in coinTicker.items():
+                    writer.writerow([key, value])
+                f.close()
 
                 return redirect(url_for('adminOption'))
 
@@ -619,6 +634,7 @@ def delAccount():
     elif request.method == 'GET':
         return render_template('deleteCcount.html')
 
+#Allows  the admin to search up any client account to see what they own
 @app.route('/Adminastrative/Options/Clent_Search', methods=['GET', 'POST'])
 def clientSearch():
     if (request.method == 'POST'):
@@ -642,6 +658,7 @@ def clientSearch():
     elif request.method == 'GET':
         return render_template('searchClient.html')
 
+#This method allows admins to fufli an order portraying that the coin was bought
 @app.route('/Adminastrative/Options/AddCoins', methods=['GET', 'POST'])
 def buyCoins():
     a = []
@@ -732,6 +749,7 @@ def buyCoins():
     elif request.method == 'GET':
         return render_template('upCoin1.html', names = a)
 
+#This a method accessed by admins allows a client coin to be sold
 @app.route('/Adminastrative/Options/SellCoins', methods=['GET', 'POST'])
 def sellCoins():
     a = []
@@ -798,4 +816,18 @@ def sellCoins():
 
 
 if (__name__ == '__main__'):
-    app.run(debug=True)
+    f = open("coinTicker.csv", "r", newline='')
+    reader = csv.reader(f)
+    coinTicker = {}
+    for i in reader:
+        coinTicker[i[0]] = i[1]
+        print(i)
+    f.close()
+    f = open("coinsown.csv", "r", newline='')
+    reader = csv.reader(f)
+    coinsOwn = []
+    for i in reader:
+        coinsOwn.append(i[0])
+    print(coinsOwn)
+    f.close()
+    app.run(debug=False)
